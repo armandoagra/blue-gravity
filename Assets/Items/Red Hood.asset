@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdf93507faba7414cbd007c2e188c5c7, type: 3}
-  m_Name: Hood 1
+  m_Script: {fileID: 11500000, guid: d0477d47d42017d48aefe2e1830ae1de, type: 3}
+  m_Name: Red Hood
   m_EditorClassIdentifier: 
   <icon>k__BackingField: {fileID: 21300000, guid: 20eb058aea3c3a744bb5d47a1610550a, type: 3}
   <modelSprite>k__BackingField: {fileID: 21300000, guid: 20eb058aea3c3a744bb5d47a1610550a, type: 3}
@@ -18,3 +18,9 @@ MonoBehaviour:
   <description>k__BackingField: A red hood. Be on the look out for big, bad wolves!
   <buyValue>k__BackingField: 10
   <sellValue>k__BackingField: 2
+  <type>k__BackingField: 0
+  <level>k__BackingField: 5
+  <strength>k__BackingField: 5
+  <dexterity>k__BackingField: 25
+  <defense>k__BackingField: 10
+  <health>k__BackingField: 10

@@ -52,7 +52,32 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 8
-  speed: 5
+  collisionCheckLength: 0.1
+  speedMultiplier: 5
+  speedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.35
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   animator: {fileID: 8071718526551540006}
 --- !u!50 &350311864
 Rigidbody2D:
@@ -113,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77563429101fcb94e871ca723402b96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRange: 3
+  lookRange: 10
 --- !u!114 &350311871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,17 +151,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99f4322b3342daa4d98287752cdec92f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hood: {fileID: 0}
-  torso: {fileID: 0}
-  shoulder: {fileID: 0}
-  elbow: {fileID: 0}
-  wrist: {fileID: 0}
-  pelvis: {fileID: 0}
-  leg: {fileID: 0}
-  boot: {fileID: 0}
+  hood: {fileID: 2085610872}
+  torso: {fileID: 1484065875}
+  pelvis: {fileID: 1412215267}
   items: []
-  maxItems: 5
-  <gold>k__BackingField: 100
+  maxItems: 25
+  <gold>k__BackingField: 999
 --- !u!1001 &8166437049088286524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -248,6 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b099d5abb8deb4c9f252bdef416027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerEquipmentSO: {fileID: 0}
 --- !u!1 &8166871908810638290 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000011558640878, guid: 30ef59945f2a7ea499bbbe10a7d48f1a, type: 3}
@@ -265,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b099d5abb8deb4c9f252bdef416027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerEquipmentSO: {fileID: 0}
 --- !u!1 &8166871909045829868 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000011323416528, guid: 30ef59945f2a7ea499bbbe10a7d48f1a, type: 3}
@@ -282,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b099d5abb8deb4c9f252bdef416027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerEquipmentSO: {fileID: 11400000, guid: c469a103727524e4caaf9e9007cacc7e, type: 2}
 --- !u!1 &8166871909679128496 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000010690150540, guid: 30ef59945f2a7ea499bbbe10a7d48f1a, type: 3}
@@ -299,6 +322,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b099d5abb8deb4c9f252bdef416027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerEquipmentSO: {fileID: 0}
+--- !u!1 &8166871910012624274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000010339844782, guid: 30ef59945f2a7ea499bbbe10a7d48f1a, type: 3}
+  m_PrefabInstance: {fileID: 8166437049088286524}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2085610872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8166871910012624274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b099d5abb8deb4c9f252bdef416027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerEquipmentSO: {fileID: 11400000, guid: b4564684965418743a00b8630b6de2ad, type: 2}
 --- !u!1 &8166871911114769610 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000013532732406, guid: 30ef59945f2a7ea499bbbe10a7d48f1a, type: 3}
@@ -316,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b099d5abb8deb4c9f252bdef416027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerEquipmentSO: {fileID: 0}
 --- !u!1 &8166871911486583296 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000013160967484, guid: 30ef59945f2a7ea499bbbe10a7d48f1a, type: 3}
@@ -333,6 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b099d5abb8deb4c9f252bdef416027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerEquipmentSO: {fileID: 0}
 --- !u!1 &8166871911951121288 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000012713108660, guid: 30ef59945f2a7ea499bbbe10a7d48f1a, type: 3}
@@ -350,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b099d5abb8deb4c9f252bdef416027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerEquipmentSO: {fileID: 0}
 --- !u!1 &8166871911976023100 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000012671429376, guid: 30ef59945f2a7ea499bbbe10a7d48f1a, type: 3}
@@ -367,6 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b099d5abb8deb4c9f252bdef416027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerEquipmentSO: {fileID: 11400000, guid: cbf2cc49ca880cd4fb769fb64c862cd2, type: 2}
 --- !u!4 &8168182578134351896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000011914616612, guid: 30ef59945f2a7ea499bbbe10a7d48f1a, type: 3}

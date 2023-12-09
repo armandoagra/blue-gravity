@@ -8,7 +8,7 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private float lookRange;
     private PlayerMovement playerMovement;
 
-    public static Action OnToggleInventory;
+    public static Action<List<ItemSO>> OnToggleInventory;
 
     private void Awake()
     {
@@ -23,8 +23,7 @@ public class PlayerActions : MonoBehaviour
     private void HandleInteraction()
     {
         Vector3 lookDirection = playerMovement.lookDirection;
-        Debug.DrawRay(transform.position + lookDirection, lookDirection);
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position + lookDirection, lookDirection);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position + lookDirection, lookDirection, lookRange);
         if (hits.Length > 0)
         {
             foreach (RaycastHit2D c in hits)
@@ -51,7 +50,7 @@ public class PlayerActions : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            OnToggleInventory?.Invoke();
+            OnToggleInventory?.Invoke(PlayerInventory.Instance.GetInventoryItems());
         }
     }
 }

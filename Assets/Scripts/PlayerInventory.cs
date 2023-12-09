@@ -9,7 +9,7 @@ public class PlayerInventory : MonoBehaviour
 
     [Header("Equipment")]
     [SerializeField] private Equipment hood; // Splitting up so it is organized at inspector
-    [SerializeField] private Equipment torso, shoulder, elbow, wrist, pelvis, leg, boot;
+    [SerializeField] private Equipment torso, pelvis;
 
     [Header("Items")]
     [SerializeField] private List<ItemSO> items;
@@ -18,7 +18,8 @@ public class PlayerInventory : MonoBehaviour
     public static Action<int> OnGoldChanged;
     public static Action<List<ItemSO>> OnInventoryChanged;
 
-    [field:SerializeField] public int gold { get; private set; }
+    [field: SerializeField] public int gold { get; private set; }
+
 
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class PlayerInventory : MonoBehaviour
     }
     private void Start()
     {
+        items = new List<ItemSO>(maxItems);
         AddGold(0);
     }
 
@@ -44,17 +46,12 @@ public class PlayerInventory : MonoBehaviour
 
     public void SpendGold(int amount)
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.spendCoinsSFX);
         if (amount <= gold)
         {
             gold -= amount;
         }
         OnGoldChanged?.Invoke(gold);
-    }
-
-    [ContextMenu("Use Gold")]
-    public void UseGold()
-    {
-        SpendGold(10);
     }
 
     public bool HasOpenSlot()
@@ -83,6 +80,48 @@ public class PlayerInventory : MonoBehaviour
         SpendGold(itemSO.buyValue);
         AddItem(itemSO);
         return true;
+    }
+
+    public List<ItemSO> GetInventoryItems()
+    {
+        return items;
+    }
+
+    public void EquipItem(EquipmentSO equipmentSO)
+    {
+        // Don't like this approach but I'm running out of time :)
+        EquipmentSO temp;
+        switch (equipmentSO.type)
+        {
+            case EquipmentSO.EquipmentType.HOOD:
+                temp = hood.GetEquipmentSO();
+                hood.SetEquipmentSO(equipmentSO);
+                ReplaceItem(equipmentSO, temp);
+                break;
+            case EquipmentSO.EquipmentType.TORSO:
+                temp = torso.GetEquipmentSO();
+                torso.SetEquipmentSO(equipmentSO);
+                ReplaceItem(equipmentSO, temp);
+                break;
+            case EquipmentSO.EquipmentType.PELVIS:
+                temp = pelvis.GetEquipmentSO();
+                pelvis.SetEquipmentSO(equipmentSO);
+                ReplaceItem(equipmentSO, temp);
+                break;
+        }
+    }
+
+    private void ReplaceItem(ItemSO oldItem, ItemSO newItem)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i] == oldItem)
+            {
+                items[i] = newItem;
+                break;
+            }
+        }
+        OnInventoryChanged?.Invoke(items);
     }
 
 

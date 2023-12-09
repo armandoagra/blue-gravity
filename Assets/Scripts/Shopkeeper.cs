@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +13,14 @@ public class Shopkeeper : NPC, IInteractable
     [SerializeField] private List<ItemSO> itemList;
     private GameObject shopWindow;
 
+    public static Action<bool> OnWindowOpened;
+
     public void Interact()
     {
+        if (shopWindow != null) return;
         shopWindow = Instantiate(shopWindowPrefab);
         FillShopItems();
+        
     }
 
     private void FillShopItems()

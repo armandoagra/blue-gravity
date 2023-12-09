@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class Equipment : MonoBehaviour
 {
-    private SpriteRenderer equipmentSpriteRenderer;
-    private EquipmentSO playerEquipmentSO;
+    [SerializeField] private SpriteRenderer equipmentSpriteRenderer;
+    [SerializeField] private EquipmentSO playerEquipmentSO;
 
+    private void Awake()
+    {
+        equipmentSpriteRenderer = GetComponent<SpriteRenderer>();
+    }
     public void SetEquipmentSprite(Sprite sprite)
     {
-        equipmentSpriteRenderer.sprite = sprite; // Not rescaling, assuming we're using proper sprites
+        equipmentSpriteRenderer.sprite = sprite;
     }
 
     public EquipmentSO GetEquipmentSO()
     {
         return playerEquipmentSO;
+    }
+
+    public void SetEquipmentSO(EquipmentSO equipmentSO)
+    {
+        playerEquipmentSO = equipmentSO;
+        equipmentSpriteRenderer.sprite = playerEquipmentSO.modelSprite;
     }
 }

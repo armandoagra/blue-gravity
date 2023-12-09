@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField] private LayerMask obstacleLayer;
+    [SerializeField] private float collisionCheckLength;
     [SerializeField] private float speedMultiplier = 5f;
     private float timeMoving;
     [SerializeField] private AnimationCurve speedCurve;
@@ -13,12 +14,34 @@ public class PlayerMovement : MonoBehaviour
     private int isWalkingHash; // For optimization
     private bool isWalking;
     public Vector2 lookDirection { get; private set; } = Vector2.right; // Defaults to right
+    private bool blockedMovement; // Deny movement (dialogues, shop window, etc.)
 
+
+    private void OnEnable()
+    {
+        // Only the ShopWindow can block the player's movement right now
+        // But ideally this could be fired by something else, like a superclass Window
+        ShopWindow.OnWindowOpened += CanMove;
+    }
+
+    private void OnDisable()
+    {
+        ShopWindow.OnWindowOpened -= CanMove;
+    }
     private void Start()
     {
         isWalkingHash = Animator.StringToHash("IsWalking");
     }
     void Update()
+    {
+        if (!blockedMovement)
+        {
+            Move();
+        }
+        animator.SetBool(isWalkingHash, isWalking);
+    }
+
+    private void Move()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
@@ -27,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         lookDirection = moveInput;
         if (moveInput != Vector2.zero)
         {
-            if (!Physics2D.Raycast(transform.position, moveInput, 1f, obstacleLayer))
+            if (!Physics2D.Raycast(transform.position, moveInput, collisionCheckLength, obstacleLayer))
             {
                 timeMoving += Time.deltaTime;
                 // TODO: Let player "slide" by wall if pressing two keys but only one way is blocked
@@ -46,7 +69,13 @@ public class PlayerMovement : MonoBehaviour
             isWalking = false;
             timeMoving = 0f;
         }
-        animator.SetBool(isWalkingHash, isWalking);
+
+    }
+
+    private void CanMove(bool canMove)
+    {
+        isWalking = false;
+        blockedMovement = canMove;
     }
 
 }
