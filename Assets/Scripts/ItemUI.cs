@@ -11,6 +11,8 @@ public class ItemUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemName, cost;
     [SerializeField] private Button buyItemButton;
 
+
+
     public void SetUpItemUI(ItemSO itemSO)
     {
         icon.sprite = itemSO.icon;
@@ -26,4 +28,5 @@ public class ItemUI : MonoBehaviour
             buyItemButton.interactable = false;
         }
     }
+
 }

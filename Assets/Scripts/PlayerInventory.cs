@@ -16,6 +16,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private int maxItems;
 
     public static Action<int> OnGoldChanged;
+    public static Action<List<ItemSO>> OnInventoryChanged;
 
     [field:SerializeField] public int gold { get; private set; }
 
@@ -65,6 +66,7 @@ public class PlayerInventory : MonoBehaviour
     {
         // No need for additional checks
         items.Add(itemSO);
+        OnInventoryChanged?.Invoke(items);
     }
 
     public void LootItem(ItemSO itemSO)
@@ -81,7 +83,6 @@ public class PlayerInventory : MonoBehaviour
         SpendGold(itemSO.buyValue);
         AddItem(itemSO);
         return true;
-
     }
 
 
