@@ -1391,6 +1391,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8664038397870085491, guid: 2cc7160877f2e1e4390d2247bb18bf2d, type: 3}
+      propertyPath: speedCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664038397870085491, guid: 2cc7160877f2e1e4390d2247bb18bf2d, type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664038397870085491, guid: 2cc7160877f2e1e4390d2247bb18bf2d, type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664038397870085491, guid: 2cc7160877f2e1e4390d2247bb18bf2d, type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[0].value
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664038397870085491, guid: 2cc7160877f2e1e4390d2247bb18bf2d, type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664038397870085491, guid: 2cc7160877f2e1e4390d2247bb18bf2d, type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8664038397870085491, guid: 2cc7160877f2e1e4390d2247bb18bf2d, type: 3}
+      propertyPath: speedCurve.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8939107028395968675, guid: 2cc7160877f2e1e4390d2247bb18bf2d, type: 3}
       propertyPath: m_Name
       value: Player
