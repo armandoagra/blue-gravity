@@ -8,13 +8,13 @@ using UnityEngine.UI;
 public class ItemUI : MonoBehaviour
 {
     [SerializeField] private Image icon;
-    [SerializeField] private TextMeshProUGUI description, cost;
+    [SerializeField] private TextMeshProUGUI itemName, cost;
     [SerializeField] private Button buyItemButton;
 
     public void SetUpItemUI(ItemSO itemSO)
     {
         icon.sprite = itemSO.icon;
-        description.text = itemSO.description;
+        itemName.text = itemSO.itemName;
         cost.text = itemSO.buyValue.ToString();
         buyItemButton.onClick.AddListener(() => BuyItemButton(itemSO));
     }

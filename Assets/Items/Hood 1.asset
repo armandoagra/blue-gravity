@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Hood 1
   m_EditorClassIdentifier: 
   <icon>k__BackingField: {fileID: 21300000, guid: 20eb058aea3c3a744bb5d47a1610550a, type: 3}
+  <itemName>k__BackingField: Red Hood
   <description>k__BackingField: A red hood. Be on the look out for big, bad wolves!
   <buyValue>k__BackingField: 10
   <sellValue>k__BackingField: 2

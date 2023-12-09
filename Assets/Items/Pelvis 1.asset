@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Pelvis 1
   m_EditorClassIdentifier: 
   <icon>k__BackingField: {fileID: 21300000, guid: b1babcb6ce4ee78478abc5076a6d1b8d, type: 3}
+  <itemName>k__BackingField: Pantskrrrrt
   <description>k__BackingField: Very strong pantskrrrt!
   <buyValue>k__BackingField: 100
   <sellValue>k__BackingField: 20
