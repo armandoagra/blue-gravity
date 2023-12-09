@@ -617,7 +617,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -758,6 +758,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b099d5abb8deb4c9f252bdef416027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1179517005 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95000010398391834, guid: 30ef59945f2a7ea499bbbe10a7d48f1a, type: 3}
+  m_PrefabInstance: {fileID: 1484065864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1193385870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1677,6 +1682,10 @@ PrefabInstance:
       propertyPath: speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8664038397870085491, guid: 2cc7160877f2e1e4390d2247bb18bf2d, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1179517005}
     - target: {fileID: 8664038397870085491, guid: 2cc7160877f2e1e4390d2247bb18bf2d, type: 3}
       propertyPath: obstacleLayer.m_Bits
       value: 8
